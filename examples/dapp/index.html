@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DApp Example — TdeA Bridge</title>
+  <script type="module">
+    import { BridgeClient } from "../../packages/bridge-sdk/dist/index.js";
+
+    let bc;
+    async function connectWallet() {
+      bc = new BridgeClient("ws://localhost:3001");
+      await bc.connect();
+
+      const pairing = {
+        id: "req-" + Date.now(),
+        type: "pairing_request",
+        dapp: { name: "Example DApp", url: "http://localhost:3000/examples/dapp" },
+        scopes: ["get_accounts","algo_sign_tx"],
+        timestamp: Date.now()
+      };
+
+      bc.pairingRequest(pairing);
+      bc.onMessage(msg => {
+        document.getElementById("session-status").textContent = "connected";
+        console.log("Received:", msg);
+      });
+
+      document.getElementById("pairing-qr").textContent = JSON.stringify(pairing, null, 2);
+    }
+
+    window.connectWallet = connectWallet;
+  </script>
+</head>
+<body>
+  <h1>DApp Example</h1>
+  <button onclick="connectWallet()">Connect Wallet</button>
+  <pre id="pairing-qr"></pre>
+  <div id="session-status">disconnected</div>
+</body>
+</html>

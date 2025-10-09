@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wallet Example — TdeA Bridge</title>
+  <script type="module">
+    import { BridgeClient } from "../../packages/bridge-sdk/dist/index.js";
+
+    let bc;
+    async function startWallet() {
+      bc = new BridgeClient("ws://localhost:3001");
+      await bc.connect();
+
+      bc.onMessage(msg => {
+        if (msg.type === "pairing_request") {
+          document.getElementById("modal").style.display = "block";
+          window.pendingPairing = msg;
+        }
+      });
+    }
+
+    async function approve() {
+      const pairing = window.pendingPairing;
+      const resp = {
+        id: pairing.id,
+        type: "pairing_response",
+        session_id: "sess-" + Date.now(),
+        wallet_pubkey: "stub-wallet-pubkey",
+        expires_at: Date.now() + 86400000
+      };
+      bc.send(resp);
+      document.getElementById("modal").style.display = "none";
+    }
+
+    async function reject() {
+      window.pendingPairing = null;
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.startWallet = startWallet;
+    window.approve = approve;
+    window.reject = reject;
+  </script>
+</head>
+<body onload="startWallet()">
+  <h1>Wallet Example</h1>
+  <div id="modal" style="display:none; border:1px solid #ccc; padding:1rem; background:#f9f9f9;">
+    <h2>Pairing Request</h2>
+    <button onclick="approve()">Approve</button>
+    <button onclick="reject()">Reject</button>
+  </div>
+</body>
+</html>

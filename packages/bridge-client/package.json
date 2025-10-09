@@ -1,0 +1,29 @@
+{
+  "name": "@tdea/bridge-client",
+  "version": "1.0.0",
+  "description": "Client SDK for connecting dApps to the TdeA Wallet.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [
+    "algorand",
+    "wallet",
+    "tdea"
+  ],
+  "author": "TdeA Team",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/ws": "^8.5.11",
+    "@types/events": "^3.0.3"
+  },
+  "dependencies": {
+    "events": "^3.3.0",
+    "ws": "^8.18.0"
+  },
+  "peerDependencies": {
+    "algosdk": ">=2.0.0"
+  }
+}
