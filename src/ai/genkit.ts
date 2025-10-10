@@ -7,11 +7,11 @@
 
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/googleai';
-import { NextjsPlugin } from '@genkit-ai/next';
+// CORRECCIÓN: Debe ser una importación por defecto
+import NextjsPlugin from '@genkit-ai/next';
 
 export const ai = genkit({
-  plugins: [googleAI(), NextjsPlugin()],
+  plugins: [googleAI(), NextjsPlugin()], // Se llama sin el objeto de configuración
   logLevel: 'debug',
   enableTracingAndMetrics: true,
 });
-    
