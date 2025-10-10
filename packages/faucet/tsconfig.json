@@ -1,5 +1,3 @@
-
-  // Archivo: packages/faucet/tsconfig.json
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
@@ -10,7 +8,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@tdea/*": ["../../src/*"]
-      // NOTA: El alias "genkit/flow" ha sido ELIMINADO de aquí y movido a la base.
+      // El alias "genkit/flow" fue movido al tsconfig.base.json
     }
   },
   "include": [
