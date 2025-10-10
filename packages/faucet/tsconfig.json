@@ -6,8 +6,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@/*": ["./src/*"],
+      // 1. Alias Local: Resuelve importaciones dentro de packages/faucet/src.
+      "@/*": ["./src/*"], 
+      
+      // 2. Alias Compartido: Resuelve importaciones del código de la raíz (e.g., ../../src).
       "@tdea/*": ["../../src/*"],
+      
+      // 3. Hack de Genkit: Resuelve el error 'genkit/flow' apuntando al node_modules local.
       "genkit/flow": ["./node_modules/genkit/flow"]
     }
   },
