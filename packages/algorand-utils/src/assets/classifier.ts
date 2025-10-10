@@ -1,9 +1,9 @@
 'use server';
 
-// CORRECCIÓN: Añadir la extensión .js a las importaciones relativas
-import { getIndexerClient, type Network } from '../config.js';
-import { logEvent } from '../logger.js';
-import { resolveIpfsUrl } from './ipfs.js';
+// CORRECCIÓN: Se eliminan las extensiones .js de las importaciones relativas
+import { getIndexerClient, type Network } from '../config'; 
+import { logEvent } from '../logger';
+import { resolveIpfsUrl } from './ipfs';
 
 export type AssetType = 'ALGO' | 'FT' | 'NFT';
 export type NftStandard = 'ARC3' | 'ARC69' | 'ARC19' | 'GENERIC';
