@@ -1,8 +1,8 @@
 'use server';
 /**
- * @fileoverview This file is the entry point for Genkit.
+ * @fileoverview Este archivo es el punto de entrada para Genkit.
  *
- * It is used to configure and initialize Genkit.
+ * Se utiliza para configurar e inicializar Genkit.
  */
 
 import { genkit } from 'genkit';
@@ -14,3 +14,4 @@ export const ai = genkit({
   logLevel: 'debug',
   enableTracingAndMetrics: true,
 });
+    
