@@ -55,5 +55,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// ¡SOLUCIÓN FINAL DE TIPADO! Aseguramos que ButtonProps sea visible para todos.
+// ¡VERIFICADO! Esta línea es crucial para que ButtonProps sea reconocida.
 export { Button, buttonVariants, ButtonProps }
