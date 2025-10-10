@@ -1,4 +1,3 @@
-
 'use client';
 /**
  * @fileoverview Funciones de alto nivel para operaciones criptográficas.
@@ -63,7 +62,11 @@ export async function decryptMnemonic(enc: EncryptedPayload | string, password: 
         
         const { key } = await deriveKey(password, salt, ['decrypt'], data.iterations || 200000);
 
-        const decryptedBuffer = await aesGcmDecrypt(ciphertext, iv, key);
+        // CORRECCIÓN: Convierte el Buffer de Node.js a ArrayBuffer para satisfacer la API Web Crypto.
+        // ArrayBuffer se extrae con .buffer y se ajusta con slice.
+        const ciphertextBuffer = ciphertext.buffer.slice(ciphertext.byteOffset, ciphertext.byteOffset + ciphertext.byteLength);
+
+        const decryptedBuffer = await aesGcmDecrypt(ciphertextBuffer, iv, key);
         const mnemonic = decoder.decode(decryptedBuffer);
         
         // @ts-ignore
