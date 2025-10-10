@@ -1,4 +1,7 @@
-// Si usas TypeScript:
-import { FaucetApp } from '../src/index'; // Asegúrate de que FaucetApp es el nombre de tu exportación.
+// Archivo: packages/faucet/pages/index.tsx
+
+// SOLUCIÓN: Usar importación por defecto para coincidir con la exportación por defecto
+// del componente FaucetApp en '../src/index'.
+import FaucetApp from '../src/index'; 
 
 export default FaucetApp;
