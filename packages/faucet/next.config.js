@@ -2,27 +2,21 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. Configuración esencial para monorepos
-  // Permite que Next.js compile y mueva correctamente los módulos a la estructura de Vercel.
+  // Configuración esencial para monorepos para que Vercel encuentre los archivos de construcción
   output: 'standalone',
 
-  // 2. Definición de paquetes para transpilación
-  // Solo incluimos tu paquete interno enlazado aquí.
+  // ÚLTIMA CORRECCIÓN: Solo incluimos tu paquete interno enlazado aquí.
+  // Lucide-react fue eliminado de esta lista para resolver el conflicto con serverExternalPackages.
   transpilePackages: ['@tdea/algorand-utils'],
 
-  // 3. LA SOLUCIÓN DEFINITIVA PARA EL CONFLICTO DE VERSIÓN DE REACT
-  // Esta propiedad CRÍTICA fuerza a los Server Components a buscar estas dependencias
-  // en los 'node_modules' de la raíz, respetando la versión exacta (18.3.1) definida
-  // con los 'overrides' en el package.json de la raíz. Esto previene el error
-  // 'useActionState is not a function'.
+  // Configuración CRÍTICA para Monorepo/Server Components
+  // Esto fuerza a usar la versión de React de la raíz, resolviendo el TypeError.
   serverExternalPackages: [
     'react', 
     'react-dom', 
-    'lucide-react'
+    'lucide-react' // Lucide-react sigue siendo externo para evitar conflictos de bundling
   ],
-
-  // Eliminamos el bloque 'experimental' desactualizado para prevenir advertencias y errores.
 };
 
-// Usa 'module.exports' para la máxima compatibilidad con el sistema de módulos de Next.js
+// Se utiliza 'module.exports' para la máxima compatibilidad con Next.js
 module.exports = nextConfig;
