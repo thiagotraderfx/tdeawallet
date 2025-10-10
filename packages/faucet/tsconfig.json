@@ -3,27 +3,25 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./dist",
-    // "rootDir": "./src",  <-- LÍNEA ELIMINADA para resolver el conflicto de rutas
-    "composite": true,
-    "paths": {
-      "@/*": ["../../src/*"]
-    },
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,            // Mantener false para evitar fallos de librerías
-    "noImplicitAny": false,     // Mantener false
-    "esModuleInterop": true,
-    "module": "esnext",
+    // ... otras opciones
+    "composite": false, // Cambiar de true a false o eliminar
+    // ...
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {
+      "@/*": ["./src/*"] // Cambia esto si apunta a una ruta superior (../../src/*), para que apunte solo al src local
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "pages/**/*.ts", "pages/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "pages/**/*.ts",
+    "pages/**/*.tsx"
+  ],
   "exclude": ["node_modules", "dist"],
   "references": [
+    // Si tienes esta referencia, déjala, pero el composite: false debería manejar el problema de tipado interno.
     { "path": "../algorand-utils" }
   ]
 }
