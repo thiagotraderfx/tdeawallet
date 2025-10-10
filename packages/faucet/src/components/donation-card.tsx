@@ -11,8 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// ¡IMPORTACIÓN CLAVE! Importamos Button y los tipos ButtonProps y ButtonVariantProps
-// para garantizar que la definición de 'variant' y 'size' sea reconocida.
+// ¡Mantenemos esta importación crucial!
 import { Button, type ButtonProps, type ButtonVariantProps } from "@/components/ui/button"; 
 
 import { Input } from "@/components/ui/input";
@@ -47,7 +46,16 @@ export function DonationCard({ address }: { address: string }) {
         </p>
         <div className="flex w-full items-center space-x-2">
             <Input type="text" value={address} readOnly className="font-mono text-xs flex-grow"/>
-            <Button variant="outline" size="icon" onClick={copyToClipboard} aria-label="Copiar dirección">
+            {/* Forzamos el tipo al componente. En React, a veces esto es necesario
+               cuando la inferencia de forwardRef en un monorepo falla.*/}
+            <Button
+                variant="outline" 
+                size="icon" 
+                onClick={copyToClipboard} 
+                aria-label="Copiar dirección"
+                // Añadir una prop trivial puede ayudar a forzar la re-evaluación
+                type="button"
+            >
                 <Copy className="h-4 w-4" />
             </Button>
         </div>
