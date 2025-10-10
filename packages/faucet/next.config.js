@@ -5,12 +5,11 @@ const nextConfig = {
   // Configuración esencial para monorepos
   output: 'standalone',
 
-  // ÚNICAMENTE incluimos el paquete interno que SÍ necesita transpilación.
-  // CRÍTICO: 'lucide-react' DEBE estar AUSENTE de esta lista.
+  // CRÍTICO: 'lucide-react' fue REMOVIDO de esta lista.
+  // Solo incluimos tu paquete interno enlazado aquí.
   transpilePackages: ['@tdea/algorand-utils'],
 
-  // Esta lista incluye las dependencias que deben ser tratadas como externas 
-  // para resolver el conflicto de versiones de React en el monorepo.
+  // Esta lista resuelve el problema de la versión de React (useFormState / useActionState).
   serverExternalPackages: [
     'react', 
     'react-dom', 
@@ -19,4 +18,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
