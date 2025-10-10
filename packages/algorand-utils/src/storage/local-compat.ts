@@ -1,4 +1,3 @@
-
 "use client";
 /**
  * @fileoverview Lógica para migrar billeteras desde el formato antiguo de localStorage (`tdea_wallets_v1`)
@@ -6,8 +5,9 @@
  */
 
 import { saveWallet } from './wallet-db';
-import type { StoredWallet } from './types';
-import type { EncryptedPayload } from '../crypto';
+// CORRECCIÓN: EncryptedPayload debe importarse de './types' ya que allí reside con StoredWallet.
+import type { StoredWallet, EncryptedPayload } from './types'; 
+// La línea original 'import type { EncryptedPayload } from '../crypto';' se ha eliminado/fusionado.
 
 const V1_STORAGE_KEY = 'tdea_wallets_v1';
 const MIGRATION_FLAG_KEY = 'tdea:migration_flag:v2';
