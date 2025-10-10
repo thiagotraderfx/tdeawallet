@@ -8,12 +8,12 @@
  *
  * No debe incluirse en la construcción de producción (production build).
  *
- * Para ejecutar, usar: `genkit start`
+ * Para ejecutar en desarrollo, usar: `genkit start`
  */
 
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/googleai';
-// CORRECCIÓN: Usar importación por defecto
+// Importación por defecto correcta
 import NextjsPlugin from '@genkit-ai/next';
 import { defineFlow, runFlow } from 'genkit/flow';
 import { z } from 'zod';
@@ -30,10 +30,9 @@ export default genkit({
   flows: [ipAddressValidator.validateIpAddress],
   // La UI de desarrollador de Genkit se sirve desde la ruta `/genkit`.
   devUi: {
-    // Forzar que la UI de desarrollador se sirva desde un puerto específico.
+    // Las opciones de puerto se comentan para usar los valores por defecto
     // port: 4001,
   },
-  // Forzar que la API se sirva desde un puerto específico.
   // api: {
   //   port: 3101,
   // },
