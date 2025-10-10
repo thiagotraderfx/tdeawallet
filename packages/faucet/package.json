@@ -10,15 +10,8 @@
   },
   "dependencies": {
     "zod": "^3.22.4", 
-    // CORRECCIÓN 1: Usamos la versión de la raíz.
-    // CORRECCIÓN 2: El paquete base de Genkit es "genkit" (del monorepo), 
-    // pero el módulo 'genkit/flow' es exportado por genkit, por lo que 
-    // lo instalamos en el paquete faucet para que esté disponible localmente.
     "genkit": "^1.14.1", 
-    
-    // CORRECCIÓN 3: Nombre y versión de paquete corregidos para Google AI.
     "@genkit-ai/googleai": "^1.14.1",
-    
     "@tdea/algorand-utils": "*",
     "react-qr-code": "^2.0.15",
     "next": "^15.3.3",
