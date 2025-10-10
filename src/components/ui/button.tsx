@@ -1,4 +1,4 @@
-// src/components/ui/button.tsx.    
+// src/components/ui/button.tsx
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
@@ -35,7 +35,7 @@ const buttonVariants = cva(
   }
 )
 
-// CORRECCIÓN CLAVE: El 'export' aquí se elimina para evitar el conflicto de doble exportación
+// CORRECCIÓN: Se elimina el 'export' de aquí para evitar la doble exportación y el conflicto Type error.
 interface ButtonProps 
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -59,6 +59,6 @@ Button.displayName = "Button"
 // Definimos el tipo ButtonVariantProps.
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-// Mantenemos la exportación separada para cumplir con 'isolatedModules'
+// Mantenemos la exportación separada para cumplir con 'isolatedModules' y exportar los tipos
 export { Button, buttonVariants };
 export type { ButtonProps, ButtonVariantProps };
