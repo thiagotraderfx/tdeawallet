@@ -10,7 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+
+// ¡CORRECCIÓN APLICADA! Importamos ButtonProps para forzar a TypeScript a reconocer los tipos.
+import { Button, ButtonProps } from "@/components/ui/button"; 
+
 import { Input } from "@/components/ui/input";
 import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
