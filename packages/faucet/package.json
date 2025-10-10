@@ -13,7 +13,9 @@
     "@tdea/algorand-utils": "*",
     "react-qr-code": "^2.0.15",
     "next": "^15.3.3",
-    "lucide-react": "^0.475.0"
+    "lucide-react": "^0.475.0",
+    // ¡NUEVA LÍNEA! Añadir la dependencia faltante aquí:
+    "@radix-ui/react-slot": "^1.2.3" 
   },
   "devDependencies": {
     "@types/react": "^18",
