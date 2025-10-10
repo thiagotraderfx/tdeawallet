@@ -1,3 +1,5 @@
+// src/components/ui/button.tsx
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -53,4 +55,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-export { Button, buttonVariants }
+// CORRECCIÓN: Exportamos ButtonProps para que los componentes que usan <Button>
+// reconozcan correctamente las propiedades 'variant' y 'size'.
+export { Button, buttonVariants, ButtonProps }
