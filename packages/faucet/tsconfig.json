@@ -15,8 +15,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "pages/**/*.ts",
-    "pages/**/*.tsx",
-    "../../src/ai/**/*.ts"
+    "pages/**/*.tsx"
+    // ELIMINADA: "../../src/ai/**/*.ts"
   ],
   "exclude": ["node_modules", "dist"],
   "references": [
