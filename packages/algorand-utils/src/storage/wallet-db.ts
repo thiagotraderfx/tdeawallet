@@ -24,7 +24,8 @@ async function getDB() {
   }
   return openDB<WalletDBSchema>(DB_NAME, DB_VERSION, {
     upgrade(db, oldVersion, newVersion, transaction) {
-      if (!db.objectStoreStoreNames.contains(STORE_NAME)) {
+      // CORRECCIÓN: 'objectStoreStoreNames' cambiado a 'objectStoreNames'
+      if (!db.objectStoreNames.contains(STORE_NAME)) { 
         const store = db.createObjectStore(STORE_NAME, { keyPath: 'address' });
         store.createIndex('createdAt', 'createdAt');
       }
