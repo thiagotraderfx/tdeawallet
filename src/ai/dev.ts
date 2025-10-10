@@ -1,16 +1,17 @@
 'use server';
 /**
- * @fileoverview This file is the development entry point for Genkit.
+ * @fileoverview Este archivo es el punto de entrada de desarrollo para Genkit.
  *
- * It is used to configure the Genkit development environment, including
- * the developer UI, and to register all the flows and plugins.
+ * Se utiliza para configurar el entorno de desarrollo de Genkit, incluyendo
+ * la interfaz de usuario para desarrolladores (UI dev), y para registrar
+ * todos los flujos y plugins.
  *
- * It should not be included in the production build.
+ * No debe incluirse en la construcción de producción (production build).
  *
- * To run, `genkit start`
+ * Para ejecutar, usar: `genkit start`
  */
 
-import { genkit }d from 'genkit';
+import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/googleai';
 import { NextjsPlugin } from '@genkit-ai/next';
 import { defineFlow, runFlow } from 'genkit/flow';
@@ -22,16 +23,16 @@ export default genkit({
   plugins: [
     googleAI(),
     NextjsPlugin({
-      // The Next.js plugin is required for API route support.
+      // El plugin de Next.js es requerido para el soporte de rutas API.
     }),
   ],
   flows: [ipAddressValidator.validateIpAddress],
-  // The Genkit developer UI is served from the `/genkit` path.
+  // La UI de desarrollador de Genkit se sirve desde la ruta `/genkit`.
   devUi: {
-    // Force the developer UI to be served from a specific port.
+    // Forzar que la UI de desarrollador se sirva desde un puerto específico.
     // port: 4001,
   },
-  // Force the API to be served from a specific port.
+  // Forzar que la API se sirva desde un puerto específico.
   // api: {
   //   port: 3101,
   // },
