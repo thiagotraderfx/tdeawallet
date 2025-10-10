@@ -2,19 +2,14 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": false,
-    // ¡CAMBIO CRÍTICO! Usar la resolución de módulos más moderna y flexible de Node.js
-    "moduleResolution": "nodeNext", 
+    // CORRECCIÓN CLAVE: Volver a 'bundler' para la flexibilidad con extensiones de archivo.
+    "moduleResolution": "bundler", 
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      // 1. Alias Local (sin cambios)
-      "@/*": ["./src/*"], 
-      
-      // 2. Alias Compartido (sin cambios)
+      "@/*": ["./src/*"],
       "@tdea/*": ["../../src/*"],
-      
-      // 3. Hack Genérico FINAL: Forzar que cualquier subpaquete de Genkit se resuelva
-      // en la carpeta node_modules de la raíz del monorepo.
+      // Hack final para Genkit: Apuntamos al nodo de Genkit en la raíz del monorepo
       "genkit/*": ["../../node_modules/genkit/*"]
     }
   },
