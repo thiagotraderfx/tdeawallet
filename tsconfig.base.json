@@ -15,20 +15,8 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "baseUrl": ".", 
-    // SOLUCIÓN FINAL: Mapear el módulo a la ruta del ARCHIVO de declaración de tipos.
-    // Usamos `genkit/flow` -> `node_modules/@genkit-ai/core/dist/flow.d.ts` o similar.
-    // El mejor intento es apuntar a la carpeta core/dist. 
-    // Si la librería 'genkit' no tiene un archivo d.ts en la carpeta 'flow' localmente,
-    // este intento fallará. Intentaremos el camino más común:
-    "paths": {
-      "genkit/flow": [
-        // Intento más específico: Apuntar al archivo d.ts dentro del módulo.
-        "./node_modules/genkit/dist/flow.d.ts",
-        // Fallback a la ruta de subpaquete.
-        "./node_modules/genkit/flow/index.d.ts"
-      ]
-    }
+    "baseUrl": "."
+    // ELIMINADO: Todo el bloque "paths" relacionado con Genkit.
   },
   "exclude": ["node_modules", "dist"]
 }
