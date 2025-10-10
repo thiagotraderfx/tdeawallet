@@ -1,4 +1,4 @@
-// packages/faucet/src/components/donation-card.tsx
+// packages/faucet/src/components/donation-card.tsx.  
 
 "use client";
 
