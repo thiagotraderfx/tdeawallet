@@ -12,7 +12,7 @@
       // Hack final para Genkit: Apuntamos al nodo de Genkit en la raíz del monorepo
       "genkit/*": ["../../node_modules/genkit/*"]
     }
-  },
+  },  
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
