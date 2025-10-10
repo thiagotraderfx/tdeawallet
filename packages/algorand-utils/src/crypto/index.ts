@@ -4,7 +4,7 @@
  * Este módulo exporta las funciones principales para cifrar y descifrar mnemónicos,
  * utilizando los módulos de derivación de clave y cifrado AES-GCM subyacentes.
  * Prioriza la seguridad y el manejo cuidadoso de los datos sensibles.
- */
+ */  
 
 import { deriveKey } from './kdf';
 import { aesGcmEncrypt, aesGcmDecrypt } from './aes-gcm';
