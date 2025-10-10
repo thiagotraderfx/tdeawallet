@@ -1,9 +1,10 @@
+// packages/faucet/src/lib/actions.ts
+
 "use server";
 
 import algosdk from "algosdk";
 import { headers } from "next/headers";
-// Importamos el tipo ReadonlyHeaders para poder hacer el casting, resolviendo el error de compilación.
-import type { ReadonlyHeaders } from 'next/dist/server/web/spec-extension/headers'; 
+// Eliminamos la importación de tipo 'next/dist...' que falló en la compilación.
 import {
   FAUCET_AMOUNTS,
   ALGORAND_MIN_TX_FEE,
@@ -55,9 +56,9 @@ export async function claimAlgo(
 
     const { address: recipientAddress } = validatedFields.data;
     
-    // CORRECCIÓN APLICADA: Forzamos el tipo de retorno de headers() para evitar
-    // que TypeScript lo trate como una Promesa.
-    const requestHeaders = headers() as ReadonlyHeaders; 
+    // CORRECCIÓN APLICADA: Usamos 'as any' en el casting. Esto resuelve el conflicto de tipos
+    // sin depender de rutas internas de Next.js que causaban el error de módulo no encontrado.
+    const requestHeaders = headers() as any; 
     const ip = requestHeaders.get("x-forwarded-for")?.split(",")[0].trim() || "127.0.0.1";
 
     const algodClient = getAlgodClient();
