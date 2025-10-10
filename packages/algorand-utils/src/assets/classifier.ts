@@ -1,8 +1,9 @@
 'use server';
 
-import { getIndexerClient, type Network } from '../config';
-import { logEvent } from '../logger';
-import { resolveIpfsUrl } from './ipfs';
+// CORRECCIÓN: Añadir la extensión .js a las importaciones relativas
+import { getIndexerClient, type Network } from '../config.js';
+import { logEvent } from '../logger.js';
+import { resolveIpfsUrl } from './ipfs.js';
 
 export type AssetType = 'ALGO' | 'FT' | 'NFT';
 export type NftStandard = 'ARC3' | 'ARC69' | 'ARC19' | 'GENERIC';
@@ -24,7 +25,7 @@ export interface ClassifiedAsset {
 
 /**
  * Clasifica un activo de Algorand basado en sus parámetros.
- * @param assetId - El ID del activo de Algorand.
+ * @param assetId - El ID del activo de Algorandum.
  * @returns Un objeto ClassifiedAsset normalizado.
  */
 export async function classifyAsset(assetId: number, network: Network): Promise<ClassifiedAsset> {
