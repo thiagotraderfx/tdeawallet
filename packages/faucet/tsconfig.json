@@ -1,36 +1,22 @@
-// packages/faucet/tsconfig.json
-
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    // Configuración para permitir la compilación en monorepos Next.js.
     "composite": false,
-    
-    // Opciones de resolución de módulos recomendadas por Next.js y TypeScript
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    
-    // CORRECCIÓN CLAVE: Ajuste del alias de ruta. 
-    // Apuntamos dos niveles hacia arriba (../../) para alcanzar la carpeta 
-    // 'src' en la raíz del monorepo, donde residen los componentes compartidos.
     "paths": {
-      "@/*": ["../../src/*"] 
+      "@/*": ["../../src/*"]
     }
   },
-  
-  // Incluir todos los archivos fuente y de páginas dentro de este paquete.
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "pages/**/*.ts",
-    "pages/**/*.tsx"
+    "pages/**/*.tsx",
+    "../../src/ai/**/*.ts"
   ],
-  
-  // Excluir directorios generados y de dependencias.
   "exclude": ["node_modules", "dist"],
-  
-  // Referencia explícita a otros paquetes locales (si aplica).
   "references": [
     { "path": "../algorand-utils" }
   ]
