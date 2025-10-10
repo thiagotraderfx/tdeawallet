@@ -6,7 +6,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@/*": ["../../src/*"]
+      // Alias para el código fuente compartido (existente)
+      "@/*": ["../../src/*"],
+      
+      // SOLUCIÓN FINAL: Forzar la resolución de tipos de Genkit
+      // Esto asegura que el compilador encuentre 'genkit/flow' en los node_modules locales.
+      "genkit": ["./node_modules/genkit"],
+      "genkit/*": ["./node_modules/genkit/*"]
     }
   },
   "include": [
