@@ -6,11 +6,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      // 1. Alias Local (Resuelve el error actual: "@/components/ui/card")
-      "@/*": ["./src/*"], 
-      
-      // 2. Alias Compartido (Para código de la raíz como la AI, etc.)
-      "@tdea/*": ["../../src/*"]
+      "@/*": ["./src/*"],
+      "@tdea/*": ["../../src/*"],
+      "genkit/flow": ["../../node_modules/genkit/flow"]
     }
   },
   "include": [
