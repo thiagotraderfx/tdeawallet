@@ -12,7 +12,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Loader, CheckCircle2, AlertCircle, ExternalLink } from "lucide-react";
 
-// 1. Definimos las props problemáticas fuera del componente SubmitButton.
+// Definimos las props que causan el conflicto de tipado en el monorepo.
+// Usamos 'as const' para tipar los valores como literales.
 const submitButtonProps = {
     size: "lg",
 } as const;
@@ -25,7 +26,9 @@ function SubmitButton({ isPending }: { isPending: boolean }) {
       className="w-full font-semibold text-base py-6"
       disabled={isPending}
       aria-disabled={isPending}
-      // 2. APLICAMOS EL HACK FINAL: Pasamos las props con spread y casting 'as any'
+      // SOLUCIÓN FINAL (WORKAROUND): Usamos spread y casting 'as any'.
+      // Esto salta la verificación de tipos estricta que falla en la resolución
+      // de monorepos, garantizando que 'size' se aplique correctamente.
       {...(submitButtonProps as any)}
     >
       {isPending ? (
@@ -110,4 +113,4 @@ export function FaucetForm({ explorerUrl }: { explorerUrl: string }) {
     </div>
   );
 }
-}
+// El archivo termina aquí, sin llaves de cierre adicionales.
