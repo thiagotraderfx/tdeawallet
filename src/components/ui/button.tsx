@@ -35,7 +35,6 @@ const buttonVariants = cva(
   }
 )
 
-// CORRECCIÓN: Se elimina el 'export' de aquí para evitar la doble exportación y el conflicto Type error.
 interface ButtonProps 
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
@@ -56,9 +55,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// Definimos el tipo ButtonVariantProps.
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-// Mantenemos la exportación separada para cumplir con 'isolatedModules' y exportar los tipos
 export { Button, buttonVariants };
 export type { ButtonProps, ButtonVariantProps };
