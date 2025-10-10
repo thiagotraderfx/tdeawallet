@@ -1,25 +1,28 @@
+// packages/faucet/next.config.js
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configuración necesaria para monorepos para que Vercel encuentre los archivos de construcción
+  // 1. Configuración esencial para monorepos
+  // Permite que Next.js compile y mueva correctamente los módulos a la estructura de Vercel.
   output: 'standalone',
 
-  // Configuración de monorepo: transpila paquetes que residen fuera del directorio actual
-  // Asumiendo que @tdea/algorand-utils es un paquete local enlazado.
+  // 2. Definición de paquetes para transpilación
+  // Solo incluimos tu paquete interno enlazado aquí.
   transpilePackages: ['@tdea/algorand-utils'],
 
-  // CONFIGURACIÓN CRÍTICA PARA RESOLVER EL CONFLICTO DE VERSIÓN DE REACT
-  // Al externalizar 'react' y 'react-dom' de los Server Components, forzamos
-  // a Next.js a usar la versión singular definida en el package.json raíz.
-  experimental: {
-    serverComponentsExternalPackages: [
-      'react', 
-      'react-dom', 
-      // Agregar 'lucide-react' ya que es otra dependencia grande y compartida
-      'lucide-react'
-    ],
-  },
+  // 3. LA SOLUCIÓN DEFINITIVA PARA EL CONFLICTO DE VERSIÓN DE REACT
+  // Esta propiedad CRÍTICA fuerza a los Server Components a buscar estas dependencias
+  // en los 'node_modules' de la raíz, respetando la versión exacta (18.3.1) definida
+  // con los 'overrides' en el package.json de la raíz. Esto previene el error
+  // 'useActionState is not a function'.
+  serverExternalPackages: [
+    'react', 
+    'react-dom', 
+    'lucide-react'
+  ],
+
+  // Eliminamos el bloque 'experimental' desactualizado para prevenir advertencias y errores.
 };
 
-// Se utiliza 'module.exports' ya que es la forma más compatible con Next.js/CommonJS,
-// aunque se puede usar 'export default nextConfig' con la configuración de 'type: module'.
+// Usa 'module.exports' para la máxima compatibilidad con el sistema de módulos de Next.js
 module.exports = nextConfig;
