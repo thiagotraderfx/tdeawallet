@@ -1,0 +1,17 @@
+{
+  "builds": [
+    {
+      "src": "packages/faucet/package.json",
+      "use": "@vercel/next",
+      "config": {
+        "maxLambdaSize": "50mb"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "packages/faucet/$1"
+    }
+  ]
+}
