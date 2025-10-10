@@ -1,4 +1,3 @@
-
 "use client";
 
 import { openDB, type DBSchema } from "idb";
@@ -25,7 +24,7 @@ async function getDB() {
   }
   return openDB<WalletDBSchema>(DB_NAME, DB_VERSION, {
     upgrade(db, oldVersion, newVersion, transaction) {
-      if (!db.objectStoreNames.contains(STORE_NAME)) {
+      if (!db.objectStoreStoreNames.contains(STORE_NAME)) {
         const store = db.createObjectStore(STORE_NAME, { keyPath: 'address' });
         store.createIndex('createdAt', 'createdAt');
       }
