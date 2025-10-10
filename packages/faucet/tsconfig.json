@@ -1,18 +1,18 @@
 {
+  // Archivo: packages/faucet/tsconfig.json
+{
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": false,
-    // CORRECCIÓN CLAVE: Volver a 'bundler' para la flexibilidad con extensiones de archivo.
     "moduleResolution": "bundler", 
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@tdea/*": ["../../src/*"],
-      // Hack final para Genkit: Apuntamos al nodo de Genkit en la raíz del monorepo
-      "genkit/*": ["../../node_modules/genkit/*"]
+      "@tdea/*": ["../../src/*"]
+      // NOTA: El alias "genkit/flow" ha sido ELIMINADO de aquí y movido a la base.
     }
-  },  
+  },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
