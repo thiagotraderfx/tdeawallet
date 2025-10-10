@@ -13,7 +13,8 @@
 
 import { genkit } from 'genkit';
 import { googleAI } from '@genkit-ai/googleai';
-import { NextjsPlugin } from '@genkit-ai/next';
+// CORRECCIÓN: Usar importación por defecto
+import NextjsPlugin from '@genkit-ai/next';
 import { defineFlow, runFlow } from 'genkit/flow';
 import { z } from 'zod';
 
