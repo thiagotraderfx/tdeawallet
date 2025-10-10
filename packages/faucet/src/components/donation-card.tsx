@@ -11,8 +11,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// ¡CORRECCIÓN APLICADA! Importamos ButtonProps para forzar a TypeScript a reconocer los tipos.
-import { Button, ButtonProps } from "@/components/ui/button"; 
+// SOLUCIÓN DEFINITIVA: Importamos 'Button' (el componente) y 'type ButtonProps' 
+// (la definición de la interfaz) para forzar el reconocimiento del tipo en el monorepo.
+import { Button, type ButtonProps } from "@/components/ui/button"; 
 
 import { Input } from "@/components/ui/input";
 import { Copy } from "lucide-react";
