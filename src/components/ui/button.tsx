@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva, type VariantProps } from "class-variance-authority" // Importamos el tipo VariantProps
 
 import { cn } from "@/lib/utils"
 
@@ -55,5 +55,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// ¡VERIFICADO! ButtonProps debe estar aquí para que el código de donación-card.tsx funcione.
-export { Button, buttonVariants, ButtonProps }
+// ¡MODIFICACIÓN CLAVE! Reexportamos ButtonProps. Para hacerlo robusto,
+// definiremos el tipo VariantProps aquí también para que esté disponible para importación.
+type ButtonVariantProps = VariantProps<typeof buttonVariants>
+
+export { Button, buttonVariants, ButtonProps, ButtonVariantProps }
