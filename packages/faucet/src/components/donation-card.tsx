@@ -11,9 +11,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// SOLUCIÓN DEFINITIVA: Importamos 'Button' (el componente) y 'type ButtonProps' 
-// (la definición de la interfaz) para forzar el reconocimiento del tipo en el monorepo.
-import { Button, type ButtonProps } from "@/components/ui/button"; 
+// ¡IMPORTACIÓN CLAVE! Importamos Button y los tipos ButtonProps y ButtonVariantProps
+// para garantizar que la definición de 'variant' y 'size' sea reconocida.
+import { Button, type ButtonProps, type ButtonVariantProps } from "@/components/ui/button"; 
 
 import { Input } from "@/components/ui/input";
 import { Copy } from "lucide-react";
