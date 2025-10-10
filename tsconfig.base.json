@@ -13,7 +13,14 @@
     "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true
+    "sourceMap": true,
+    
+    // CORRECCIONES CLAVE AÑADIDAS:
+    "baseUrl": ".", 
+    "paths": {
+      "genkit": ["./node_modules/genkit"],
+      "genkit/*": ["./node_modules/genkit/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }
