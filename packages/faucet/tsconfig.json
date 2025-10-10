@@ -6,7 +6,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      "@/*": ["../../src/*"]
+      // 1. Alias Local (Resuelve el error actual: "@/components/ui/card")
+      "@/*": ["./src/*"], 
+      
+      // 2. Alias Compartido (Para código de la raíz como la AI, etc.)
+      "@tdea/*": ["../../src/*"]
     }
   },
   "include": [
