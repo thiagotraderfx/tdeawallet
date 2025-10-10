@@ -55,5 +55,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// ¡VERIFICADO! Esta línea es crucial para que ButtonProps sea reconocida.
+// ¡VERIFICADO! ButtonProps debe estar aquí para que el código de donación-card.tsx funcione.
 export { Button, buttonVariants, ButtonProps }
