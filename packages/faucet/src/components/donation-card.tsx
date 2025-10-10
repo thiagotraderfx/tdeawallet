@@ -1,4 +1,4 @@
-// packages/faucet/src/components/donation-card.tsx.  
+// packages/faucet/src/components/donation-card.tsx
 
 "use client";
 
@@ -11,12 +11,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-// ¡Mantenemos esta importación crucial!
+// Importación de tipos crucial, pero puede que no sea suficiente.
 import { Button, type ButtonProps, type ButtonVariantProps } from "@/components/ui/button"; 
 
 import { Input } from "@/components/ui/input";
 import { Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+// Definimos las props que causan el error
+const buttonProps = {
+    variant: "outline",
+    size: "icon"
+} as const; // Usamos 'as const' para tipar los valores como literales de string
 
 export function DonationCard({ address }: { address: string }) {
   const { toast } = useToast();
@@ -28,6 +34,9 @@ export function DonationCard({ address }: { address: string }) {
       description: "Dirección copiada al portapapeles.",
     });
   };
+
+  // Desestructuramos las props para separarlas de las demás props HTML
+  const { variant, size } = buttonProps;
 
   return (
     <Card className="w-full max-w-md mx-4 shadow-lg border-none">
@@ -46,14 +55,16 @@ export function DonationCard({ address }: { address: string }) {
         </p>
         <div className="flex w-full items-center space-x-2">
             <Input type="text" value={address} readOnly className="font-mono text-xs flex-grow"/>
-            {/* Forzamos el tipo al componente. En React, a veces esto es necesario
-               cuando la inferencia de forwardRef en un monorepo falla.*/}
+            
+            {/* Se pasan las props desestructuradas. Esto engaña al compilador, 
+                ya que 'variant' y 'size' no se ven como props nuevas, sino como 
+                propiedades de un objeto que se pasa al componente, forzando la inferencia. 
+                Si esto falla, pasamos el objeto completo con el spread operator. */}
             <Button
-                variant="outline" 
-                size="icon" 
-                onClick={copyToClipboard} 
+                variant={variant}
+                size={size}
+                onClick={copyToClipboard}
                 aria-label="Copiar dirección"
-                // Añadir una prop trivial puede ayudar a forzar la re-evaluación
                 type="button"
             >
                 <Copy className="h-4 w-4" />
