@@ -35,7 +35,8 @@ const buttonVariants = cva(
   }
 )
 
-export interface ButtonProps
+// CORRECCIÓN CLAVE: El 'export' aquí se elimina para evitar el conflicto de doble exportación
+interface ButtonProps 
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
@@ -58,6 +59,6 @@ Button.displayName = "Button"
 // Definimos el tipo ButtonVariantProps.
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-// Corrección para 'isolatedModules': Exportamos valores y tipos por separado.
+// Mantenemos la exportación separada para cumplir con 'isolatedModules'
 export { Button, buttonVariants };
 export type { ButtonProps, ButtonVariantProps };
