@@ -10,7 +10,7 @@ import {
   ALGORAND_MIN_TX_FEE,
 } from "./faucet-config";
 import { FaucetFormSchema, type FaucetFormState } from "./schema";
-import { validateIpAddress } from "@/ai/flows/ip-address-validator";
+// ELIMINADA: import { validateIpAddress } from "@/ai/flows/ip-address-validator";
 import { buildClaimResult } from "./claim-utils";
 import { getAlgodClient, getActiveConfig } from "@tdea/algorand-utils";
 
@@ -64,17 +64,11 @@ export async function claimAlgo(
     const algodClient = getAlgodClient();
     const faucetAccount = getFaucetAccount();
 
-    // Temporarily disable IP validation for stability
+    // Bloque de validación de IP de Genkit ELIMINADO.
+    // Antes:
     // const ipValidation = await validateIpAddress({ ipAddress: ip });
     // if (!ipValidation.isSafe) {
-    //    console.warn(`Blocked unsafe IP: ${ip}. Reason: ${ipValidation.reason}`);
-    //    const result = buildClaimResult({
-    //      success: false,
-    //      message: "Error: Tu IP está bloqueada por motivos de seguridad.",
-    //      code: "IP_BLOCKED",
-    //    });
-    //    console.info(`[claimAlgo][RETURN]`, { requestId, data: JSON.stringify(result) });
-    //    return result;
+    //    ...
     // }
 
     const accountInfo = await algodClient.accountInformation(faucetAccount.addr).do();
