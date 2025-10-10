@@ -6,7 +6,7 @@
   "types": "src/index.ts",
   "scripts": {
     "lint": "eslint . --ext .ts,.tsx --max-warnings=0",
-    "vercel-build": "next build"  // <-- ¡Esta es la línea clave!
+    "build": "next build" 
   },
   "dependencies": {
     "@tdea/algorand-utils": "*",
@@ -27,4 +27,5 @@
     "react-dom": ">=18"
   }
 }
+
 
