@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "zod": "^3.22.4", 
+    "@genkit-ai/core": "^0.6.1",
+    "@genkit-ai/google-genai": "^0.6.1",
     "@tdea/algorand-utils": "*",
     "react-qr-code": "^2.0.15",
     "next": "^15.3.3",
@@ -29,3 +31,4 @@
     "react-dom": ">=18"
   }
 }
+
