@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority" // Importamos el tipo VariantProps
+import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"
 
@@ -55,8 +55,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = "Button"
 
-// ¡MODIFICACIÓN CLAVE! Reexportamos ButtonProps. Para hacerlo robusto,
-// definiremos el tipo VariantProps aquí también para que esté disponible para importación.
+// Definimos el tipo ButtonVariantProps.
 type ButtonVariantProps = VariantProps<typeof buttonVariants>
 
-export { Button, buttonVariants, ButtonProps, ButtonVariantProps }
+// Corrección para 'isolatedModules': Exportamos valores y tipos por separado.
+export { Button, buttonVariants };
+export type { ButtonProps, ButtonVariantProps };
