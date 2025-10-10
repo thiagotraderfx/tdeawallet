@@ -1,4 +1,3 @@
-
 "use client";
 
 import { generateAccount, mnemonicToSecretKey, secretKeyToMnemonic } from 'algosdk';
