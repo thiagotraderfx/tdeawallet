@@ -58,3 +58,4 @@ Button.displayName = "Button"
 // CORRECCIÓN: Exportamos ButtonProps para que los componentes que usan <Button>
 // reconozcan correctamente las propiedades 'variant' y 'size'.
 export { Button, buttonVariants, ButtonProps }
+     
