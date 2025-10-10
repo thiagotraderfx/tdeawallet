@@ -1,4 +1,4 @@
-{
+
   // Archivo: packages/faucet/tsconfig.json
 {
   "extends": "../../tsconfig.base.json",
