@@ -2,18 +2,20 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "composite": false,
-    "moduleResolution": "bundler",
+    // ¡CAMBIO CRÍTICO! Usar la resolución de módulos más moderna y flexible de Node.js
+    "moduleResolution": "nodeNext", 
     "resolveJsonModule": true,
     "isolatedModules": true,
     "paths": {
-      // 1. Alias Local: Resuelve importaciones dentro de packages/faucet/src.
+      // 1. Alias Local (sin cambios)
       "@/*": ["./src/*"], 
       
-      // 2. Alias Compartido: Resuelve importaciones del código de la raíz (e.g., ../../src).
+      // 2. Alias Compartido (sin cambios)
       "@tdea/*": ["../../src/*"],
       
-      // 3. Hack de Genkit: Resuelve el error 'genkit/flow' apuntando al node_modules local.
-      "genkit/flow": ["./node_modules/genkit/flow"]
+      // 3. Hack Genérico FINAL: Forzar que cualquier subpaquete de Genkit se resuelva
+      // en la carpeta node_modules de la raíz del monorepo.
+      "genkit/*": ["../../node_modules/genkit/*"]
     }
   },
   "include": [
@@ -28,4 +30,3 @@
     { "path": "../algorand-utils" }
   ]
 }
-    
