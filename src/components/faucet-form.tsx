@@ -14,7 +14,8 @@ import {
   AlertCircle,
   ExternalLink,
 } from 'lucide-react';
-import { useFormState } from 'react-dom';
+// La import  ación de useFormState DEBE ser desde 'react-dom' para Server Actions
+import { useFormState } from 'react-dom'; 
 import {
   AlertDialog,
   AlertDialogContent,
@@ -46,12 +47,17 @@ function SubmitButton({ isPending }: { isPending: boolean }) {
 }
 
 export default function FaucetForm() {
+  // Estado inicial del formulario.
   const initialState: FaucetFormState = { success: false, message: null };
+  
+  // useFormState es la versión estable de useActionState.
   const [state, formAction] = useFormState(claimAlgo, initialState);
+  
   const formRef = React.useRef<HTMLFormElement>(null);
   const [isPending, startTransition] = React.useTransition();
   const [showDialog, setShowDialog] = React.useState(false);
 
+  // Envuelve la acción del formulario en startTransition para manejar el estado pendiente
   const wrappedAction = (payload: FormData) => {
     startTransition(() => {
       formAction(payload);
@@ -59,9 +65,11 @@ export default function FaucetForm() {
   };
 
   React.useEffect(() => {
+    // Si la acción finaliza (no está pendiente) y hay un mensaje, muestra el diálogo.
     if (!isPending && state.message) {
       setShowDialog(true);
     }
+    // Si la acción fue exitosa, reinicia el formulario.
     if (state.success) {
       formRef.current?.reset();
     }
