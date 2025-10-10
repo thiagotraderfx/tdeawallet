@@ -8,7 +8,7 @@
     "paths": {
       "@/*": ["./src/*"],
       "@tdea/*": ["../../src/*"],
-      "genkit/flow": ["../../node_modules/genkit/flow"]
+      "genkit/flow": ["./node_modules/genkit/flow"]
     }
   },
   "include": [
