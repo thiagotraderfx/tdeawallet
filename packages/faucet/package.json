@@ -14,15 +14,40 @@
     "react-qr-code": "^2.0.15",
     "next": "^15.3.3",
     "lucide-react": "^0.475.0",
-    "@radix-ui/react-slot": "^1.2.3"
+    
+    
+    /* * DEPENDENCIAS DE UI CONSOLIDADAS (AÑADIDAS PARA LA COMPILACIÓN) */
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    
+    /* Dependencias de Utilidad y Diseño */
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.1",
+    
+    /* Dependencias de Formularios y Fechas */
+    "@hookform/resolvers": "^4.1.3",
+    "react-hook-form": "^7.54.2",
+    "date-fns": "^3.6.0",
+    "react-day-picker": "^8.10.1",
+    
+    /* Componentes Radix UI */
+    "@radix-ui/react-slot": "^1.2.3",
+    "@radix-ui/react-label": "^2.1.2",
+    "@radix-ui/react-toast": "^1.2.6",
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-dropdown-menu": "^2.1.6",
+    "@radix-ui/react-select": "^2.1.6",
+    "@radix-ui/react-separator": "^1.1.2",
+    "@radix-ui/react-tooltip": "^1.1.8"
+    
   },
   "devDependencies": {
+    // Los tipos permanecen en devDependencies
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^9.0.0",
     "typescript": "^5.4.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "@types/node": "20.x"
   },
   "peerDependencies": {
