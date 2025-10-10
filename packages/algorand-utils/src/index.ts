@@ -1,21 +1,26 @@
-// packages/algorand-utils/src/index.ts
+/**
+ * @fileoverview Archivo de barril principal para el paquete @tdea/algorand-utils.
+ * Exporta todas las funcionalidades públicas desde un solo lugar.
+ */
 
-export * from './config';
-export * from './tx';
-export * from './transactions';
-export * from './keystore';
+// Exportaciones donde NO hay conflictos de nombres
 export * from './crypto';
-export * from './storage/wallet-db';
 export * from './storage/types';
 export * from './storage/local-compat';
 export * from './assets/classifier';
-export * from './assets/ipfs';
-export * from './pricing';
+export * from './config';
 export * from './logger';
-export * from './utils';
-export * from './amounts';
-export * from './types/tx';
-export * from './crypto/validation';
-export { getAlgodClient, getIndexerClient } from './config';
-export { microalgosToAlgos } from './utils';
-export { runMigration } from './storage/local-compat';
+
+// Exportaciones CONFLICTIVAS (se usa alias para evitar el error 'removeWallet')
+
+// 1. Exportamos todo desde keystore, incluyendo su versión de removeWallet
+export * from './keystore'; 
+
+// 2. Exportamos las funciones de wallet-db, pero renombramos la función 'removeWallet'
+// para que no choque con la de 'keystore'.
+export { 
+    saveWallet, 
+    getWallet, 
+    getAllWallets, 
+    removeWallet as removeWalletFromStorage // <-- ¡SOLUCIÓN FINAL DE AMBIGÜEDAD!
+} from './storage/wallet-db';
