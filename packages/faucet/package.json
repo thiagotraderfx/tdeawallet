@@ -12,11 +12,12 @@
     "zod": "^3.22.4", 
     "@tdea/algorand-utils": "*",
     "react-qr-code": "^2.0.15",
-    "next": "^15.3.3",
+    "next": "15.3.3",
     "lucide-react": "^0.475.0",
     
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    /* DEPENDENCIAS DE UI Y REACT CONSOLIDADAS */
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
     
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
