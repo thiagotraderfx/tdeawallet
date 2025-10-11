@@ -1,31 +1,27 @@
-
 // next.config.ts (RAÍZ DEL MONOREPO)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. CONFIGURACIÓN DE MONOREPO CRÍTICA
-  output: 'standalone', // Obliga al empaquetamiento correcto de las dependencias.
+  // CRÍTICO PARA MONOREPO Y VERCEL STANDALONE
+  output: 'standalone', 
 
-  // 2. SOLUCIÓN FINAL DE DEPENDENCIAS (useActionState y Lucide-React)
-  // Esta línea obliga a que el compilador del servidor use la versión única 
-  // de estas librerías desde la raíz del monorepo, resolviendo el conflicto de 
-  // doble React/Lucide-React que causan los fallos.
+  // SOLUCIÓN FINAL A CONFLICTOS DE DEPENDENCIAS (useActionState y Lucide-React).
+  // Fuerza al compilador del servidor a usar las copias ÚNICAS de estas librerías desde la raíz.
   serverExternalPackages: [
     'react', 
     'react-dom', 
     'lucide-react'
   ],
 
-  // 3. Transpilación y Experimentales
+  // Mantiene la transpilación para que Next.js compile el código de los workspaces
   transpilePackages: ['@tdea/wallet', '@tdea/faucet', '@tdea/algorand-utils'],
   
+  // Se mantienen las configuraciones originales:
   experimental: {
     serverActions: {
-      executionTimeout: 120, // Se mantiene el timeout
+      executionTimeout: 120, // Aumenta el timeout a 120 segundos
     },
   },
-  
-  // 4. Configuración de Imágenes y Dev (Mantenida)
   images: {
     remotePatterns: [
       {
