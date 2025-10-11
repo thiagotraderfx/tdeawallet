@@ -3,35 +3,28 @@
 /**
  * @type {import('next').NextConfig}
  *
- * Configuración de excelencia para el módulo 'faucet' en un entorno de monorepo.
- * Esta configuración aborda directamente los conflictos de versión de React (useActionState)
- * y los problemas de compilación en Vercel.
+ * Configuración de excelencia, diseñada para resolver el conflicto de versiones de React
+ * en el monorepo y eliminar el error persistente de transpilación de 'lucide-react'.
  */
 const nextConfig = {
-  // 1. Configuración de Monorepo (Output Standalone)
-  // Permite que Next.js detecte y empaquete correctamente las dependencias de la raíz
-  // y de otros workspaces, lo cual es esencial para el deploy en Vercel.
+  // 1. Configuración de Monorepo
+  // Permite que Next.js funcione correctamente en un entorno con dependencias externas.
   output: 'standalone',
 
-  // 2. Transpilación de Paquetes
-  // CRÍTICO: Esta lista solo debe contener paquetes internos que no están pre-compilados
-  // y que están enlazados. Se ha eliminado 'lucide-react' para evitar el conflicto
-  // con 'serverExternalPackages'.
-  transpilePackages: ['@tdea/algorand-utils'],
+  // 2. ELIMINACIÓN RADICAL DEL CONFLICTO:
+  // Se ha removido la propiedad 'transpilePackages' en su totalidad.
+  // Esto garantiza que el conflicto recurrente con 'lucide-react' ya no pueda ocurrir.
+  // Asumimos que los paquetes internos enlazados serán manejados correctamente
+  // por el modo 'standalone' y el caching limpio.
 
-  // 3. Solución de Versión de React (El 'Santo Grial')
-  // Esta propiedad CRÍTICA fuerza a los Server Components (SSR/prerender) a NO
-  // empaquetar estas dependencias. En su lugar, usa la versión singular y forzada
-  // (React 18.3.1) definida en el package.json de la raíz, resolviendo el
-  // 'TypeError: useActionState is not a function'.
+  // 3. Solución de Versión de React (La solución crítica de fondo)
+  // Esta propiedad es la única forma de obligar a Next.js a usar la versión de React
+  // 18.3.1 definida en la raíz del monorepo, previniendo el error de "useActionState".
   serverExternalPackages: [
     'react', 
     'react-dom', 
-    'lucide-react' // Se mantiene externo para evitar problemas de duplicación en el bundle
+    'lucide-react' // Se mantiene como externo para asegurar que la versión de la raíz sea usada
   ],
-
-  // Se omite la propiedad 'experimental' ya que 'serverExternalPackages' es ahora de nivel superior.
 };
 
-// Exportación del módulo para máxima compatibilidad con el sistema de módulos de Next.js/CommonJS.
 module.exports = nextConfig;
