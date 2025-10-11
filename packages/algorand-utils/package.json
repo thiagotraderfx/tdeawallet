@@ -9,12 +9,15 @@
     "lint": "eslint . --ext .ts,.tsx --max-warnings=0"
   },
   "dependencies": {
-    "algosdk": "^2.8.0",
     "idb": "^8.0.0",
     "date-fns": "^3.6.0"
+    /* "algosdk" ELIMINADO de aquí y movido a peerDependencies */
   },
   "devDependencies": {
     "typescript": "^5.4.0",
     "eslint": "^9.0.0"
+  },
+  "peerDependencies": {
+    "algosdk": "^2.8.0"
   }
 }
