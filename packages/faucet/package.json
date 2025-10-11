@@ -11,7 +11,7 @@
   "dependencies": {
     "@tdea/algorand-utils": "*",
     "react-qr-code": "^2.0.15"
-    /* TODAS las demás dependencias (React, Next, Lucide, Zod, hookform, Radix, etc.) 
+    /* TODAS las demás dependen. cias (React, Next, Lucide, Zod, hookform, Radix, etc.) 
        han sido ELIMINADAS de aquí y ahora DEBEN estar instaladas SÓLO en la raíz. 
        Esto resuelve el conflicto de useActionState y Lucide-React. */
   },
