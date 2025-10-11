@@ -2,11 +2,10 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // CRÍTICO PARA MONOREPO Y VERCEL STANDALONE
+  // CONFIGURACIÓN CRÍTICA PARA SANEAMIENTO DE MONOREPO
   output: 'standalone', 
 
-  // SOLUCIÓN FINAL A CONFLICTOS DE DEPENDENCIAS (useActionState y Lucide-React).
-  // Fuerza al compilador del servidor a usar las copias ÚNICAS de estas librerías desde la raíz.
+  // SOLUCIÓN FINAL A CONFLICTOS DE DEPENDENCIAS (React y Lucide-React).
   serverExternalPackages: [
     'react', 
     'react-dom', 
@@ -16,7 +15,7 @@ const nextConfig = {
   // Mantiene la transpilación para que Next.js compile el código de los workspaces
   transpilePackages: ['@tdea/wallet', '@tdea/faucet', '@tdea/algorand-utils'],
   
-  // Se mantienen las configuraciones originales:
+  // CONFIGURACIONES ORIGINALES DEL PROYECTO
   experimental: {
     serverActions: {
       executionTimeout: 120, // Aumenta el timeout a 120 segundos
