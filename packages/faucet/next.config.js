@@ -2,19 +2,25 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Configuración esencial para monorepos
+  // Configuración esencial para monorepos:
+  // Necesario para que Next.js/Vercel pueda compilar módulos fuera de esta carpeta.
   output: 'standalone',
 
-  // CRÍTICO: 'lucide-react' fue REMOVIDO de esta lista.
-  // Solo incluimos tu paquete interno enlazado aquí.
+  // 1. ELIMINACIÓN DEL CONFLICTO: Esta lista está limpia.
+  // CRÍTICO: 'lucide-react' fue removido de aquí. Solo incluimos el paquete interno.
   transpilePackages: ['@tdea/algorand-utils'],
 
-  // Esta lista resuelve el problema de la versión de React (useFormState / useActionState).
+  // 2. SOLUCIÓN DEL ERROR DE REACT (useFormState):
+  // Fuerza a Next.js a tratar estos paquetes como externos y a usar la versión
+  // única y correcta (18.3.1) de la raíz del monorepo.
   serverExternalPackages: [
     'react', 
     'react-dom', 
-    'lucide-react'
+    'lucide-react' // Sigue siendo externo, pero no transpilado
   ],
+
+  // Eliminamos cualquier bloque 'experimental' desactualizado.
 };
 
+// Se utiliza 'module.exports' para la máxima compatibilidad con el sistema de módulos de Next.js.
 module.exports = nextConfig;
