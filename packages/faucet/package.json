@@ -11,16 +11,12 @@
   "dependencies": {
     "@tdea/algorand-utils": "*",
     "react-qr-code": "^2.0.15"
-    /* TODAS las demás dependen. cias (React, Next, Lucide, Zod, hookform, Radix, etc.) 
-       han sido ELIMINADAS de aquí y ahora DEBEN estar instaladas SÓLO en la raíz. 
-       Esto resuelve el conflicto de useActionState y Lucide-React. */
   },
   "devDependencies": {
-    /* Mantenemos solo el mínimo necesario si no se migra a la raíz */
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^9.0.0",
     "typescript": "^5.4.0",
-    "eslint": "^9.0.0"
-  },
-  "peerDependencies": {
-    /* Este bloque se elimina para evitar la doble instalación de React */
+    "@types/node": "20.x"
   }
 }
